@@ -1,0 +1,157 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>The Hierarchy of Control: A Guide for the DIY Workshop</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+    <style>
+        body {
+            font-family: 'Inter', sans-serif;
+        }
+        .hierarchy-pyramid {
+            display: flex;
+            flex-direction: column-reverse;
+            align-items: center;
+            margin: 2rem 0;
+        }
+        .pyramid-level {
+            clip-path: polygon(10% 0, 90% 0, 100% 100%, 0% 100%);
+            text-align: center;
+            font-weight: 700;
+            color: white;
+            padding: 0.75rem 2rem;
+            margin-bottom: -1px;
+            transition: transform 0.2s ease-in-out;
+        }
+        .pyramid-level:hover {
+            transform: scale(1.05);
+            z-index: 10;
+        }
+        .level-1 { background-color: #047857; width: 100%; max-width: 400px; } /* Elimination */
+        .level-2 { background-color: #059669; width: 90%; max-width: 360px; } /* Substitution */
+        .level-3 { background-color: #10b981; width: 80%; max-width: 320px; } /* Engineering */
+        .level-4 { background-color: #f59e0b; width: 70%; max-width: 280px; } /* Administrative */
+        .level-5 { background-color: #ef4444; width: 60%; max-width: 240px; } /* PPE */
+        .content-section {
+            border-left: 4px solid;
+            padding-left: 1.5rem;
+            margin-top: 2rem;
+        }
+    </style>
+</head>
+<body class="bg-slate-50 text-slate-800">
+
+    <div class="container mx-auto max-w-4xl px-4 sm:px-6 lg:px-8 py-12">
+        <header class="text-center mb-8">
+            <h1 class="text-4xl font-extrabold text-slate-900">The Hierarchy of Control</h1>
+            <p class="mt-2 text-xl text-slate-600">A Practical Safety Guide for Your DIY Workshop</p>
+        </header>
+
+        <main>
+            <p class="text-lg text-center max-w-3xl mx-auto">The <strong>Hierarchy of Control</strong> is a system used in workplace safety to manage risks effectively. It ranks control methods from the most reliable to the least. When tackling a hazard in your workshop, always start at the top of the pyramid and work your way down. This approach is key to creating a truly safe working environment for projects like your VW van restoration.</p>
+
+            <div class="hierarchy-pyramid">
+                <div class="pyramid-level level-5">5. PPE</div>
+                <div class="pyramid-level level-4">4. Administrative Controls</div>
+                <div class="pyramid-level level-3">3. Engineering Controls</div>
+                <div class="pyramid-level level-2">2. Substitution</div>
+                <div class="pyramid-level level-1">1. Elimination</div>
+            </div>
+
+            <section id="elimination" class="content-section border-green-800">
+                <h2 class="text-3xl font-bold text-green-800">1. Elimination (Most Effective)</h2>
+                <p class="mt-2 text-lg text-slate-700">This is the gold standard of safety because it involves <strong>physically removing the hazard</strong> from your workshop. If the hazard doesn't exist, it can't cause harm.</p>
+                <div class="mt-4 bg-white p-6 rounded-lg shadow-sm">
+                    <h3 class="text-xl font-semibold mb-2">Best Strategies:</h3>
+                    <ul class="list-disc list-inside space-y-2 text-slate-600">
+                        <li><strong>Design it out:</strong> Plan your project so the hazardous task is no longer necessary.</li>
+                        <li><strong>Cease the process:</strong> Stop using a particularly dangerous piece of equipment or substance if it's not essential.</li>
+                    </ul>
+                    <div class="mt-4 p-4 bg-green-50 border border-green-200 rounded-md">
+                        <p class="font-semibold text-green-900">🚐 VW Van Example:</p>
+                        <p class="text-slate-700">Instead of spending hours welding a complex, rusty patch on a van panel (creating fire, fume, and burn hazards), you source a complete, rust-free replacement panel that can be bolted or bonded on. The welding hazard has been completely eliminated.</p>
+                    </div>
+                </div>
+            </section>
+
+            <section id="substitution" class="content-section border-green-600">
+                <h2 class="text-3xl font-bold text-green-600">2. Substitution</h2>
+                <p class="mt-2 text-lg text-slate-700">This involves <strong>replacing the hazard with a safer alternative</strong> that performs the same function.</p>
+                <div class="mt-4 bg-white p-6 rounded-lg shadow-sm">
+                    <h3 class="text-xl font-semibold mb-2">Best Strategies:</h3>
+                    <ul class="list-disc list-inside space-y-2 text-slate-600">
+                        <li><strong>Use safer materials:</strong> Swap a toxic chemical for a non-toxic or less hazardous one.</li>
+                        <li><strong>Use safer equipment:</strong> Change to a tool that has fewer inherent risks.</li>
+                        <li><strong>Change the process:</strong> Alter your work method to make it inherently safer.</li>
+                    </ul>
+                    <div class="mt-4 p-4 bg-green-50 border border-green-200 rounded-md">
+                        <p class="font-semibold text-green-900">🚐 VW Van Example:</p>
+                        <p class="text-slate-700">When cleaning old, greasy engine parts, you substitute a toxic, solvent-based degreaser with a powerful, non-toxic citrus-based cleaner. This reduces your risk of inhaling harmful fumes and causing skin irritation.</p>
+                    </div>
+                </div>
+            </section>
+
+            <section id="engineering" class="content-section border-green-500">
+                <h2 class="text-3xl font-bold text-green-500">3. Engineering Controls</h2>
+                <p class="mt-2 text-lg text-slate-700">These controls <strong>physically isolate you from the hazard</strong>. They are built into the workplace or equipment and work without requiring constant action from you.</p>
+                <div class="mt-4 bg-white p-6 rounded-lg shadow-sm">
+                    <h3 class="text-xl font-semibold mb-2">Best Strategies:</h3>
+                    <ul class="list-disc list-inside space-y-2 text-slate-600">
+                        <li><strong>Isolation:</strong> Use guards, barriers, or enclosures to keep you away from the danger.</li>
+                        <li><strong>Ventilation:</strong> Install systems that capture and remove contaminants at the source.</li>
+                        <li><strong>Mechanical aids:</strong> Use tools to assist with lifting or moving to prevent manual handling injuries.</li>
+                    </ul>
+                    <div class="mt-4 p-4 bg-green-50 border border-green-200 rounded-md">
+                        <p class="font-semibold text-green-900">🚐 VW Van Example:</p>
+                        <p class="text-slate-700">When welding the van's chassis, you use a mobile fume extractor with a flexible arm positioned directly over the weld. This engineering control captures the harmful fumes at the source before they can enter your breathing zone.</p>
+                    </div>
+                </div>
+            </section>
+
+            <section id="administrative" class="content-section border-amber-500">
+                <h2 class="text-3xl font-bold text-amber-500">4. Administrative Controls</h2>
+                <p class="mt-2 text-lg text-slate-700">These strategies <strong>change the way you work</strong>. They rely on procedures, training, and rules to reduce your exposure to a hazard.</p>
+                <div class="mt-4 bg-white p-6 rounded-lg shadow-sm">
+                    <h3 class="text-xl font-semibold mb-2">Best Strategies:</h3>
+                    <ul class="list-disc list-inside space-y-2 text-slate-600">
+                        <li><strong>Safe Work Procedures:</strong> Develop a step-by-step guide for high-risk tasks.</li>
+                        <li><strong>Training and Supervision:</strong> Ensure you are properly trained on how to use tools safely.</li>
+                        <li><strong>Job Rotation and Timing:</strong> Break up long, repetitive tasks to reduce exposure.</li>
+                        <li><strong>Signage:</strong> Use warning signs for hot surfaces, noise, or other dangers.</li>
+                    </ul>
+                    <div class="mt-4 p-4 bg-amber-50 border border-amber-200 rounded-md">
+                        <p class="font-semibold text-amber-900">🚐 VW Van Example:</p>
+                        <p class="text-slate-700">Before using your angle grinder, you follow a pre-start checklist you created: check the guard is in place, inspect the disc for damage, clear the area of flammable materials, and ensure your fire extinguisher is nearby. This procedure reduces the risk of an accident.</p>
+                    </div>
+                </div>
+            </section>
+
+            <section id="ppe" class="content-section border-red-500">
+                <h2 class="text-3xl font-bold text-red-500">5. Personal Protective Equipment (PPE)</h2>
+                <p class="mt-2 text-lg text-slate-700">PPE is equipment you wear to protect yourself from a hazard. It is the <strong>last line of defense</strong> because it only protects you and does nothing to remove the hazard. Its effectiveness relies entirely on being fitted and used correctly every time.</p>
+                <div class="mt-4 bg-white p-6 rounded-lg shadow-sm">
+                    <h3 class="text-xl font-semibold mb-2">Best Strategies:</h3>
+                    <ul class="list-disc list-inside space-y-2 text-slate-600">
+                        <li><strong>Select the right PPE for the job:</strong> Use gear specifically designed for the task.</li>
+                        <li><strong>Ensure proper fit and maintenance:</strong> Poorly fitting or damaged PPE is ineffective.</li>
+                    </ul>
+                    <div class="mt-4 p-4 bg-red-50 border border-red-200 rounded-md">
+                        <p class="font-semibold text-red-900">🚐 VW Van Example:</p>
+                        <p class="text-slate-700">When grinding rust off the van's underbody, you wear safety glasses, a P2-rated respirator for fine dust, hearing protection, and leather gloves. This PPE protects you from the remaining risks of flying debris, dust inhalation, noise, and sharp edges.</p>
+                    </div>
+                </div>
+            </section>
+
+            <footer class="mt-12 text-center border-t pt-8">
+                <p class="text-lg font-semibold">The Best Strategy: A Combined Approach</p>
+                <p class="mt-2 text-slate-600 max-w-3xl mx-auto">In any real-world project, the most effective safety solution involves using a <strong>combination of controls</strong> from different levels of the hierarchy. Never rely on PPE alone when a higher-level control is available.</p>
+            </footer>
+
+        </main>
+    </div>
+
+</body>
+</html>
+
