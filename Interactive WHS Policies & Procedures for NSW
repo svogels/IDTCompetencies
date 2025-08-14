@@ -1,0 +1,219 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Interactive WHS Policies & Procedures for NSW</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <style>
+        body {
+            font-family: 'Inter', sans-serif;
+        }
+        details > summary {
+            list-style: none;
+        }
+        details > summary::-webkit-details-marker {
+            display: none;
+        }
+        details[open] summary .arrow-down {
+            transform: rotate(180deg);
+        }
+        .policy-card {
+            transition: box-shadow 0.3s ease-in-out;
+        }
+        .policy-card:hover {
+            box-shadow: 0 4px 6px -1px rgb(0 0 0 / 0.1), 0 2px 4px -2px rgb(0 0 0 / 0.1);
+        }
+    </style>
+</head>
+<body class="bg-slate-50 text-slate-800">
+
+    <div class="container mx-auto max-w-4xl px-4 sm:px-6 lg:px-8 py-12">
+        <header class="text-center mb-10">
+            <h1 class="text-4xl font-extrabold text-slate-900">WHS Policies & Procedures Guide</h1>
+            <p class="mt-2 text-xl text-slate-600">An Interactive Guide for NSW Workplaces</p>
+        </header>
+
+        <main class="space-y-4">
+
+            <!-- Risk Management -->
+            <details class="policy-card bg-white rounded-lg shadow-sm overflow-hidden group">
+                <summary class="flex items-center justify-between p-5 cursor-pointer bg-white hover:bg-slate-100">
+                    <div class="flex items-center">
+                        <div class="bg-blue-100 text-blue-700 rounded-full h-10 w-10 flex items-center justify-center mr-4">
+                            <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z" /></svg>
+                        </div>
+                        <div>
+                            <h2 class="text-xl font-semibold text-slate-800">Risk Management</h2>
+                            <p class="text-sm text-slate-500">Systematically identifying, assessing, and controlling hazards.</p>
+                        </div>
+                    </div>
+                    <span class="arrow-down transition-transform duration-300 text-slate-500">▼</span>
+                </summary>
+                <div class="p-6 border-t border-slate-200">
+                    <h3 class="font-bold text-lg text-slate-700">Policy: WHS Risk Management Policy</h3>
+                    <p class="text-slate-600 mb-4">A formal document outlining the organisation's commitment to managing workplace hazards proactively.</p>
+                    <h4 class="font-semibold text-slate-700">Key Procedures and Actions:</h4>
+                    <ul class="list-disc list-inside mt-2 space-y-2 text-slate-600">
+                        <li><strong>Hazard Identification:</strong> Conduct regular workplace inspections, consult with workers, and review incident/near-miss data.</li>
+                        <li><strong>Risk Assessment:</strong> Use a risk matrix to evaluate the likelihood and consequence of identified hazards.</li>
+                        <li><strong>Control Implementation:</strong> Apply the Hierarchy of Controls to eliminate or minimise risks.</li>
+                        <li><strong>Review:</strong> Regularly review control measures to ensure they remain effective, especially after an incident or when changes occur in the workplace.</li>
+                    </ul>
+                </div>
+            </details>
+
+            <!-- Fire -->
+            <details class="policy-card bg-white rounded-lg shadow-sm overflow-hidden group">
+                <summary class="flex items-center justify-between p-5 cursor-pointer bg-white hover:bg-slate-100">
+                    <div class="flex items-center">
+                        <div class="bg-red-100 text-red-700 rounded-full h-10 w-10 flex items-center justify-center mr-4">
+                           <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17.657 18.657A8 8 0 016.343 7.343S7 9 9 10c0-2 .5-5 2.986-7C14 5 16.09 5.777 17.657 7.343A8 8 0 0117.657 18.657z" /><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9.879 16.121A3 3 0 1014.12 11.88a3 3 0 00-4.242 4.242z" /></svg>
+                        </div>
+                        <div>
+                            <h2 class="text-xl font-semibold text-slate-800">Fire</h2>
+                            <p class="text-sm text-slate-500">Safety protocols for fire prevention and response.</p>
+                        </div>
+                    </div>
+                    <span class="arrow-down transition-transform duration-300 text-slate-500">▼</span>
+                </summary>
+                <div class="p-6 border-t border-slate-200">
+                    <h3 class="font-bold text-lg text-slate-700">Policy: Fire Safety & Prevention Policy</h3>
+                    <p class="text-slate-600 mb-4">A policy detailing measures to prevent fires and the response required if a fire occurs.</p>
+                    <h4 class="font-semibold text-slate-700">Key Procedures and Actions:</h4>
+                    <ul class="list-disc list-inside mt-2 space-y-2 text-slate-600">
+                        <li><strong>Fire Risk Assessment:</strong> Identify potential fire hazards (e.g., flammable liquids, faulty electricals).</li>
+                        <li><strong>Equipment Maintenance:</strong> Schedule regular inspection and testing of fire equipment (extinguishers, alarms) in accordance with AS 1851.</li>
+                        <li><strong>Housekeeping:</strong> Implement clear procedures for waste management and storage of combustible materials.</li>
+                        <li><strong>Training:</strong> Conduct regular fire safety training for all staff, including how to use extinguishers.</li>
+                    </ul>
+                </div>
+            </details>
+
+            <!-- Emergencies -->
+            <details class="policy-card bg-white rounded-lg shadow-sm overflow-hidden group">
+                <summary class="flex items-center justify-between p-5 cursor-pointer bg-white hover:bg-slate-100">
+                    <div class="flex items-center">
+                        <div class="bg-amber-100 text-amber-700 rounded-full h-10 w-10 flex items-center justify-center mr-4">
+                            <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 16h-1v-4h-1m1-4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z" /></svg>
+                        </div>
+                        <div>
+                            <h2 class="text-xl font-semibold text-slate-800">Emergencies</h2>
+                            <p class="text-sm text-slate-500">Plans for responding to all foreseeable emergencies.</p>
+                        </div>
+                    </div>
+                    <span class="arrow-down transition-transform duration-300 text-slate-500">▼</span>
+                </summary>
+                <div class="p-6 border-t border-slate-200">
+                    <h3 class="font-bold text-lg text-slate-700">Policy: Emergency Management Plan</h3>
+                    <p class="text-slate-600 mb-4">A comprehensive plan for responding to events like medical emergencies, chemical spills, or bomb threats.</p>
+                    <h4 class="font-semibold text-slate-700">Key Procedures and Actions:</h4>
+                    <ul class="list-disc list-inside mt-2 space-y-2 text-slate-600">
+                        <li><strong>Emergency Control Organisation (ECO):</strong> Appoint and train a warden team with clear roles.</li>
+                        <li><strong>Emergency Procedures:</strong> Develop and display clear, written procedures for each type of emergency.</li>
+                        <li><strong>Contact List:</strong> Maintain an up-to-date list of emergency contacts (wardens, first aid officers).</li>
+                        <li><strong>First Aid:</strong> Ensure adequate first aid facilities and trained personnel are always available.</li>
+                    </ul>
+                </div>
+            </details>
+
+            <!-- Evacuation -->
+            <details class="policy-card bg-white rounded-lg shadow-sm overflow-hidden group">
+                <summary class="flex items-center justify-between p-5 cursor-pointer bg-white hover:bg-slate-100">
+                    <div class="flex items-center">
+                        <div class="bg-green-100 text-green-700 rounded-full h-10 w-10 flex items-center justify-center mr-4">
+                           <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M11 16l-4-4m0 0l4-4m-4 4h14m-5 4v1a3 3 0 01-3 3H6a3 3 0 01-3-3V7a3 3 0 013-3h7a3 3 0 013 3v1" /></svg>
+                        </div>
+                        <div>
+                            <h2 class="text-xl font-semibold text-slate-800">Evacuation</h2>
+                            <p class="text-sm text-slate-500">Procedures for the safe and orderly evacuation of personnel.</p>
+                        </div>
+                    </div>
+                    <span class="arrow-down transition-transform duration-300 text-slate-500">▼</span>
+                </summary>
+                <div class="p-6 border-t border-slate-200">
+                    <h3 class="font-bold text-lg text-slate-700">Policy: Workplace Evacuation Policy</h3>
+                    <p class="text-slate-600 mb-4">Details the procedures for safely evacuating all personnel from the workplace.</p>
+                    <h4 class="font-semibold text-slate-700">Key Procedures and Actions:</h4>
+                    <ul class="list-disc list-inside mt-2 space-y-2 text-slate-600">
+                        <li><strong>Evacuation Diagrams:</strong> Install clear diagrams in prominent locations as per AS 3745-2010.</li>
+                        <li><strong>Assembly Points:</strong> Designate primary and secondary emergency assembly points.</li>
+                        <li><strong>Drills:</strong> Conduct evacuation drills at least every 12 months to test procedures.</li>
+                        <li><strong>Assistance for Persons with Disabilities:</strong> Establish specific procedures to assist anyone requiring help to evacuate.</li>
+                    </ul>
+                </div>
+            </details>
+
+            <!-- Incident Investigation -->
+            <details class="policy-card bg-white rounded-lg shadow-sm overflow-hidden group">
+                <summary class="flex items-center justify-between p-5 cursor-pointer bg-white hover:bg-slate-100">
+                    <div class="flex items-center">
+                        <div class="bg-indigo-100 text-indigo-700 rounded-full h-10 w-10 flex items-center justify-center mr-4">
+                            <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8 16l2.879-2.879a1 1 0 011.414 0L15 15m-3-5V5m2 2l2-2m-6 5h5a2 2 0 012 2v5a2 2 0 01-2 2H8a2 2 0 01-2-2v-5a2 2 0 012-2z" /></svg>
+                        </div>
+                        <div>
+                            <h2 class="text-xl font-semibold text-slate-800">Incident Investigation</h2>
+                            <p class="text-sm text-slate-500">Investigating incidents and near misses to prevent recurrence.</p>
+                        </div>
+                    </div>
+                    <span class="arrow-down transition-transform duration-300 text-slate-500">▼</span>
+                </summary>
+                <div class="p-6 border-t border-slate-200">
+                    <h3 class="font-bold text-lg text-slate-700">Policy: Incident Investigation Policy</h3>
+                    <p class="text-slate-600 mb-4">Defining the process for investigating incidents to identify root causes.</p>
+                    <h4 class="font-semibold text-slate-700">Key Procedures and Actions:</h4>
+                    <ul class="list-disc list-inside mt-2 space-y-2 text-slate-600">
+                        <li><strong>Secure the Scene:</strong> Immediately make the incident scene safe to prevent further harm.</li>
+                        <li><strong>Investigation Team:</strong> Form a team (e.g., manager, HSR) to conduct the investigation.</li>
+                        <li><strong>Gather Evidence:</strong> Collect information through witness interviews, photos, and inspection.</li>
+                        <li><strong>Root Cause Analysis:</strong> Use a systematic method (e.g., the '5 Whys') to determine underlying causes.</li>
+                    </ul>
+                </div>
+            </details>
+
+            <!-- Reporting -->
+            <details class="policy-card bg-white rounded-lg shadow-sm overflow-hidden group">
+                <summary class="flex items-center justify-between p-5 cursor-pointer bg-white hover:bg-slate-100">
+                    <div class="flex items-center">
+                        <div class="bg-purple-100 text-purple-700 rounded-full h-10 w-10 flex items-center justify-center mr-4">
+                            <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 17v-2m3 2v-4m3 4v-6m2 10H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z" /></svg>
+                        </div>
+                        <div>
+                            <h2 class="text-xl font-semibold text-slate-800">Reporting</h2>
+                            <p class="text-sm text-slate-500">Encouraging and managing hazard and incident reports.</p>
+                        </div>
+                    </div>
+                    <span class="arrow-down transition-transform duration-300 text-slate-500">▼</span>
+                </summary>
+                <div class="p-6 border-t border-slate-200">
+                    <h3 class="font-bold text-lg text-slate-700">Policy: Hazard & Incident Reporting Policy</h3>
+                    <p class="text-slate-600 mb-4">A policy outlining the process for workers to report hazards, near misses, or incidents without fear of reprisal.</p>
+                    <h4 class="font-semibold text-slate-700">Key Procedures and Actions:</h4>
+                    <ul class="list-disc list-inside mt-2 space-y-2 text-slate-600">
+                        <li><strong>Reporting System:</strong> Implement a simple and accessible reporting system (e.g., forms, software).</li>
+                        <li><strong>Notification to Regulator:</strong> Establish a clear procedure for immediately notifying SafeWork NSW of any 'notifiable incidents'.</li>
+                        <li><strong>Record Keeping:</strong> Maintain a register of all reported incidents, injuries, and hazards.</li>
+                        <li><strong>Feedback Loop:</strong> Ensure a process is in place to inform the reporter of the actions taken.</li>
+                    </ul>
+                </div>
+            </details>
+
+        </main>
+    </div>
+    
+    <script>
+        const details = document.querySelectorAll('details');
+
+        details.forEach((targetDetail) => {
+            targetDetail.addEventListener("click", () => {
+                details.forEach((detail) => {
+                    if (detail !== targetDetail) {
+                        detail.removeAttribute("open");
+                    }
+                });
+            });
+        });
+    </script>
+</body>
+</html>
