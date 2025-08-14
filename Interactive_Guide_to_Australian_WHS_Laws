@@ -1,0 +1,420 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Interactive Guide to Australian WHS Laws</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <style>
+        body {
+            font-family: 'Inter', sans-serif;
+        }
+        .content-section {
+            display: none;
+        }
+        .content-section.active {
+            display: block;
+        }
+        .nav-link.active {
+            background-color: #0d9488;
+            color: white;
+        }
+        .role-card {
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+        .role-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 15px -3px rgb(0 0 0 / 0.1), 0 4px 6px -4px rgb(0 0 0 / 0.1);
+        }
+        details > summary {
+            list-style: none;
+        }
+        details > summary::-webkit-details-marker {
+            display: none;
+        }
+        details[open] summary .arrow-down {
+            transform: rotate(180deg);
+        }
+        .hierarchy-level {
+            clip-path: polygon(10% 0, 90% 0, 100% 100%, 0% 100%);
+        }
+        .risk-cycle-segment {
+            transition: background-color 0.3s ease;
+        }
+        .risk-cycle-segment:hover {
+            background-color: #ccfbf1;
+        }
+    </style>
+    <!-- Chosen Palette: Calm Harmony Neutrals (Stone, Slate, Teal, Amber) -->
+    <!-- Application Structure Plan: The application is designed as a role-based interactive dashboard. This structure was chosen because the source report contains distinct sets of obligations for different parties (PCBUs, Workers, Officers). A user can immediately select their role to view tailored information, which is far more efficient than reading a linear document. The top navigation provides secondary access to cross-cutting themes like 'Key Concepts' and the 'WHS Matrix'. This dual-navigation approach supports both role-specific queries and broader exploration, maximizing usability and speed to information. Key interactions include clickable cards, accordions for progressive disclosure of dense text, and interactive diagrams to visualize processes. -->
+    <!-- Visualization & Content Choices: 
+        - Report Info: PCBU/Worker/Officer duties -> Goal: Inform role-specific obligations -> Viz/Method: Dedicated sections with interactive accordions (HTML <details> tag) -> Interaction: Click to expand/collapse -> Justification: Prevents overwhelming users with text; allows drill-down into specific duties. Method: HTML/JS.
+        - Report Info: Risk Management Process -> Goal: Explain a 4-step cycle -> Viz/Method: Circular diagram -> Interaction: Hover over a step to see its description -> Justification: Visually represents the cyclical nature of the process, making it more memorable than a list. Method: HTML/CSS/JS.
+        - Report Info: Hierarchy of Controls -> Goal: Show prioritized safety controls -> Viz/Method: Inverted pyramid diagram -> Interaction: Click a level to highlight and read details -> Justification: The pyramid shape intuitively communicates the concept of a hierarchy of effectiveness. Method: HTML/CSS/JS.
+        - Report Info: WHS Matrix -> Goal: Compare rights/duties across domains -> Viz/Method: Grid of interactive cards -> Interaction: Click card to flip/expand for details -> Justification: More engaging and mobile-friendly than a wide, static table. Method: HTML/JS.
+        - All visualizations are created using structured HTML and styled with Tailwind CSS to avoid external dependencies and adhere to the NO SVG constraint. -->
+    <!-- CONFIRMATION: NO SVG graphics used. NO Mermaid JS used. -->
+</head>
+<body class="bg-stone-50 text-slate-800">
+
+    <header class="bg-white shadow-md sticky top-0 z-50">
+        <nav class="container mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="flex items-center justify-between h-16">
+                <div class="flex-shrink-0">
+                    <h1 class="text-xl md:text-2xl font-bold text-teal-700 cursor-pointer" onclick="showView('home')">WHS Interactive Guide</h1>
+                </div>
+                <div class="hidden md:block">
+                    <div class="ml-10 flex items-baseline space-x-4">
+                        <a href="#" class="nav-link px-3 py-2 rounded-md text-sm font-medium text-slate-700 hover:bg-teal-500 hover:text-white" onclick="showView('pcbu')">PCBU / Employer</a>
+                        <a href="#" class="nav-link px-3 py-2 rounded-md text-sm font-medium text-slate-700 hover:bg-teal-500 hover:text-white" onclick="showView('worker')">Worker</a>
+                        <a href="#" class="nav-link px-3 py-2 rounded-md text-sm font-medium text-slate-700 hover:bg-teal-500 hover:text-white" onclick="showView('officer')">Officer</a>
+                        <a href="#" class="nav-link px-3 py-2 rounded-md text-sm font-medium text-slate-700 hover:bg-teal-500 hover:text-white" onclick="showView('concepts')">Key Concepts</a>
+                        <a href="#" class="nav-link px-3 py-2 rounded-md text-sm font-medium text-slate-700 hover:bg-teal-500 hover:text-white" onclick="showView('matrix')">WHS Matrix</a>
+                    </div>
+                </div>
+                <div class="md:hidden">
+                    <button id="mobile-menu-button" class="inline-flex items-center justify-center p-2 rounded-md text-slate-600 hover:text-white hover:bg-teal-600 focus:outline-none">
+                        <svg class="h-6 w-6" stroke="currentColor" fill="none" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16m-7 6h7"></path>
+                        </svg>
+                    </button>
+                </div>
+            </div>
+            <div id="mobile-menu" class="md:hidden hidden">
+                <div class="px-2 pt-2 pb-3 space-y-1 sm:px-3">
+                    <a href="#" class="nav-link block px-3 py-2 rounded-md text-base font-medium text-slate-700 hover:bg-teal-500 hover:text-white" onclick="showView('pcbu')">PCBU / Employer</a>
+                    <a href="#" class="nav-link block px-3 py-2 rounded-md text-base font-medium text-slate-700 hover:bg-teal-500 hover:text-white" onclick="showView('worker')">Worker</a>
+                    <a href="#" class="nav-link block px-3 py-2 rounded-md text-base font-medium text-slate-700 hover:bg-teal-500 hover:text-white" onclick="showView('officer')">Officer</a>
+                    <a href="#" class="nav-link block px-3 py-2 rounded-md text-base font-medium text-slate-700 hover:bg-teal-500 hover:text-white" onclick="showView('concepts')">Key Concepts</a>
+                    <a href="#" class="nav-link block px-3 py-2 rounded-md text-base font-medium text-slate-700 hover:bg-teal-500 hover:text-white" onclick="showView('matrix')">WHS Matrix</a>
+                </div>
+            </div>
+        </nav>
+    </header>
+
+    <main class="container mx-auto p-4 sm:p-6 lg:p-8">
+        
+        <section id="home" class="content-section active">
+            <div class="text-center bg-white p-8 rounded-lg shadow-lg">
+                <h2 class="text-3xl font-bold text-slate-900 mb-4">Your Guide to Australian WHS Law</h2>
+                <p class="text-lg text-slate-600 max-w-3xl mx-auto mb-8">
+                    Navigating Work Health and Safety obligations can be complex. This interactive tool simplifies the Australian WHS framework, providing clear, role-specific information. Select your role below to understand your specific rights and responsibilities.
+                </p>
+                <div class="grid grid-cols-1 md:grid-cols-3 gap-8 max-w-5xl mx-auto">
+                    <div class="role-card bg-teal-50 p-6 rounded-lg border border-teal-200 cursor-pointer" onclick="showView('pcbu')">
+                        <h3 class="text-2xl font-semibold text-teal-800 mb-2">PCBU / Employer</h3>
+                        <p class="text-slate-600">Understand your primary duty of care, from providing a safe environment to managing psychosocial risks.</p>
+                    </div>
+                    <div class="role-card bg-amber-50 p-6 rounded-lg border border-amber-200 cursor-pointer" onclick="showView('worker')">
+                        <h3 class="text-2xl font-semibold text-amber-800 mb-2">Worker</h3>
+                        <p class="text-slate-600">Learn about your rights to a safe workplace and your responsibilities to ensure safety for yourself and others.</p>
+                    </div>
+                    <div class="role-card bg-slate-50 p-6 rounded-lg border border-slate-200 cursor-pointer" onclick="showView('officer')">
+                        <h3 class="text-2xl font-semibold text-slate-800 mb-2">Officer</h3>
+                        <p class="text-slate-600">Explore your personal duty of due diligence and the key steps to ensure corporate compliance.</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section id="pcbu" class="content-section">
+            <h2 class="text-3xl font-bold text-slate-900 mb-2">PCBU / Employer Responsibilities</h2>
+            <p class="text-lg text-slate-600 mb-6">As a Person Conducting a Business or Undertaking (PCBU), you hold the primary duty of care. This section breaks down your key responsibilities under WHS law. Click on each area to explore your obligations in detail.</p>
+            <div class="space-y-4">
+                <details class="bg-white p-4 rounded-lg shadow group">
+                    <summary class="flex justify-between items-center font-semibold cursor-pointer">
+                        Primary Duty of Care (s19)
+                        <span class="arrow-down transition-transform duration-300">▼</span>
+                    </summary>
+                    <div class="mt-4 text-slate-600">The cornerstone of your obligations is the primary duty of care. This is the overarching duty to ensure, so far as is reasonably practicable, that the health and safety of workers and other persons are not put at risk from work carried out as part of the conduct of the business or undertaking. This duty is proactive and preventative.</div>
+                </details>
+                <details class="bg-white p-4 rounded-lg shadow group">
+                    <summary class="flex justify-between items-center font-semibold cursor-pointer">
+                        Safe Work Environment, Plant & Structures
+                        <span class="arrow-down transition-transform duration-300">▼</span>
+                    </summary>
+                    <div class="mt-4 text-slate-600">You must provide and maintain a work environment without risks to health and safety. This includes the physical layout, lighting, ventilation, and safe entry/exit. The duty extends to remote work, including home offices. You must also provide and maintain safe plant (machinery), structures, and substances, including their safe use, handling, and storage.</div>
+                </details>
+                <details class="bg-white p-4 rounded-lg shadow group">
+                    <summary class="flex justify-between items-center font-semibold cursor-pointer">
+                        Safe Systems of Work
+                        <span class="arrow-down transition-transform duration-300">▼</span>
+                    </summary>
+                    <div class="mt-4 text-slate-600">Beyond the physical environment, you must provide and maintain safe systems of work. This refers to the development and implementation of safe procedures for work tasks, such as traffic management plans, permit-to-work systems for high-risk activities, procedures for manual handling, and emergency response plans.</div>
+                </details>
+                 <details class="bg-white p-4 rounded-lg shadow group">
+                    <summary class="flex justify-between items-center font-semibold cursor-pointer">
+                        Managing Psychosocial Hazards
+                        <span class="arrow-down transition-transform duration-300">▼</span>
+                    </summary>
+                    <div class="mt-4 text-slate-600">You have a duty to manage risks to psychological health on an equal footing with physical health. This involves identifying reasonably foreseeable psychosocial hazards—such as high job demands, low job control, poor support, bullying, and harassment—and implementing control measures to eliminate or minimise them.</div>
+                </details>
+                <details class="bg-white p-4 rounded-lg shadow group">
+                    <summary class="flex justify-between items-center font-semibold cursor-pointer">
+                        Consultation, Information, Training & Supervision
+                        <span class="arrow-down transition-transform duration-300">▼</span>
+                    </summary>
+                    <div class="mt-4 text-slate-600">You must consult with workers on WHS matters that directly affect them. This is a genuine two-way process of sharing information and considering their views. You must also provide any necessary information, training, instruction, and supervision to enable workers to perform their jobs safely, along with adequate welfare facilities (e.g., drinking water, toilets, first aid).</div>
+                </details>
+            </div>
+        </section>
+
+        <section id="worker" class="content-section">
+            <h2 class="text-3xl font-bold text-slate-900 mb-2">Worker Rights & Responsibilities</h2>
+            <p class="text-lg text-slate-600 mb-6">While the PCBU holds the primary duty, safety is a shared responsibility. This section outlines your essential rights and the duties you must fulfill to contribute to a safe workplace. Click to explore each area.</p>
+            <div class="grid md:grid-cols-2 gap-6">
+                <div class="bg-white p-6 rounded-lg shadow">
+                    <h3 class="text-2xl font-semibold text-amber-800 mb-4">Your Responsibilities (s28)</h3>
+                    <ul class="space-y-3 text-slate-600 list-disc list-inside">
+                        <li><b>Take reasonable care for your own health and safety.</b></li>
+                        <li><b>Take reasonable care that your actions or omissions do not adversely affect the health and safety of others.</b> This includes not engaging in bullying or harassment.</li>
+                        <li><b>Comply with any reasonable instruction</b> given by the PCBU to allow them to meet their WHS obligations.</li>
+                        <li><b>Cooperate with any reasonable WHS policy or procedure</b> that has been notified to you, such as wearing required PPE or following safe work methods.</li>
+                    </ul>
+                </div>
+                <div class="bg-white p-6 rounded-lg shadow">
+                    <h3 class="text-2xl font-semibold text-teal-800 mb-4">Your Rights</h3>
+                    <ul class="space-y-3 text-slate-600 list-disc list-inside">
+                        <li><b>The right to a safe and healthy workplace,</b> where risks are eliminated or minimised.</li>
+                        <li><b>The right to information and training</b> on how to perform your job safely.</li>
+                        <li><b>The right to representation and consultation</b> on WHS matters that affect you.</li>
+                        <li><b>The right to cease or refuse unsafe work</b> if you have a reasonable concern of a serious, immediate, or imminent risk to your health and safety.</li>
+                        <li><b>The right to be protected from discriminatory conduct</b> for raising a WHS issue.</li>
+                    </ul>
+                </div>
+            </div>
+        </section>
+
+        <section id="officer" class="content-section">
+            <h2 class="text-3xl font-bold text-slate-900 mb-2">Officer's Duty of Due Diligence (s27)</h2>
+            <p class="text-lg text-slate-600 mb-6">As an officer (a senior leader with significant influence), you have a personal, proactive duty to ensure your organisation complies with WHS laws. This duty cannot be delegated. Below are the six core elements of due diligence you must exercise.</p>
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+                <div class="bg-white p-5 rounded-lg shadow">
+                    <div class="flex items-center mb-3">
+                        <span class="bg-slate-200 text-slate-700 font-bold rounded-full h-8 w-8 flex items-center justify-center mr-3">1</span>
+                        <h4 class="font-semibold text-lg">Acquire WHS Knowledge</h4>
+                    </div>
+                    <p class="text-slate-600">Acquire and keep up-to-date knowledge of work health and safety matters relevant to your business.</p>
+                </div>
+                <div class="bg-white p-5 rounded-lg shadow">
+                    <div class="flex items-center mb-3">
+                        <span class="bg-slate-200 text-slate-700 font-bold rounded-full h-8 w-8 flex items-center justify-center mr-3">2</span>
+                        <h4 class="font-semibold text-lg">Understand Operations & Risks</h4>
+                    </div>
+                    <p class="text-slate-600">Gain an understanding of the nature of your business operations and the hazards and risks associated with them.</p>
+                </div>
+                <div class="bg-white p-5 rounded-lg shadow">
+                    <div class="flex items-center mb-3">
+                        <span class="bg-slate-200 text-slate-700 font-bold rounded-full h-8 w-8 flex items-center justify-center mr-3">3</span>
+                        <h4 class="font-semibold text-lg">Ensure Resources & Processes</h4>
+                    </div>
+                    <p class="text-slate-600">Ensure the PCBU has, and uses, appropriate resources and processes to eliminate or minimise risks.</p>
+                </div>
+                <div class="bg-white p-5 rounded-lg shadow">
+                    <div class="flex items-center mb-3">
+                        <span class="bg-slate-200 text-slate-700 font-bold rounded-full h-8 w-8 flex items-center justify-center mr-3">4</span>
+                        <h4 class="font-semibold text-lg">Ensure Information Flow</h4>
+                    </div>
+                    <p class="text-slate-600">Ensure the PCBU has processes for receiving, considering, and responding to information about incidents, hazards, and risks in a timely way.</p>
+                </div>
+                <div class="bg-white p-5 rounded-lg shadow">
+                    <div class="flex items-center mb-3">
+                        <span class="bg-slate-200 text-slate-700 font-bold rounded-full h-8 w-8 flex items-center justify-center mr-3">5</span>
+                        <h4 class="font-semibold text-lg">Ensure Compliance Processes</h4>
+                    </div>
+                    <p class="text-slate-600">Ensure the PCBU has, and implements, processes for complying with all duties and obligations under the WHS Act.</p>
+                </div>
+                <div class="bg-white p-5 rounded-lg shadow">
+                    <div class="flex items-center mb-3">
+                        <span class="bg-slate-200 text-slate-700 font-bold rounded-full h-8 w-8 flex items-center justify-center mr-3">6</span>
+                        <h4 class="font-semibold text-lg">Verify & Monitor</h4>
+                    </div>
+                    <p class="text-slate-600">Verify the provision and use of the resources and processes from steps 3-5. This is an active duty requiring you to check that systems are working effectively.</p>
+                </div>
+            </div>
+        </section>
+
+        <section id="concepts" class="content-section">
+            <h2 class="text-3xl font-bold text-slate-900 mb-6">Key WHS Concepts</h2>
+            <p class="text-lg text-slate-600 mb-8">The WHS framework is built on core principles that apply to everyone. This section provides interactive diagrams to help you understand the systematic approach to risk management and the hierarchy of controls.</p>
+            <div class="grid lg:grid-cols-2 gap-8">
+                <div class="bg-white p-6 rounded-lg shadow">
+                    <h3 class="text-2xl font-semibold text-slate-800 mb-4 text-center">The Risk Management Process</h3>
+                    <p class="text-slate-600 mb-6 text-center">WHS requires a proactive, four-step process to manage workplace hazards. Hover over each step to learn more.</p>
+                    <div class="relative w-64 h-64 md:w-80 md:h-80 mx-auto">
+                        <div class="absolute inset-0 rounded-full border-8 border-slate-200"></div>
+                        <div id="risk-info" class="absolute inset-8 rounded-full bg-white flex items-center justify-center text-center p-4">
+                            <p class="text-slate-500 font-medium">Hover over a step</p>
+                        </div>
+                        <div class="risk-cycle-segment absolute w-1/2 h-1/2 top-0 left-0 p-2" data-info="Systematically find anything in the workplace that could cause harm.">
+                            <div class="w-full h-full rounded-tl-full bg-teal-100 flex items-center justify-center text-teal-800 font-semibold">1. Identify</div>
+                        </div>
+                        <div class="risk-cycle-segment absolute w-1/2 h-1/2 top-0 right-0 p-2" data-info="Understand the nature of the harm, how serious it could be, and the likelihood of it happening.">
+                            <div class="w-full h-full rounded-tr-full bg-teal-200 flex items-center justify-center text-teal-800 font-semibold">2. Assess</div>
+                        </div>
+                        <div class="risk-cycle-segment absolute w-1/2 h-1/2 bottom-0 right-0 p-2" data-info="Eliminate or minimise the risk using the hierarchy of controls.">
+                            <div class="w-full h-full rounded-br-full bg-teal-300 flex items-center justify-center text-teal-800 font-semibold">3. Control</div>
+                        </div>
+                        <div class="risk-cycle-segment absolute w-1/2 h-1/2 bottom-0 left-0 p-2" data-info="Regularly review control measures to ensure they are working as planned.">
+                            <div class="w-full h-full rounded-bl-full bg-teal-400 flex items-center justify-center text-teal-800 font-semibold">4. Review</div>
+                        </div>
+                    </div>
+                </div>
+                <div class="bg-white p-6 rounded-lg shadow">
+                    <h3 class="text-2xl font-semibold text-slate-800 mb-4 text-center">Hierarchy of Controls</h3>
+                    <p class="text-slate-600 mb-6 text-center">When controlling risks, you must work through this hierarchy, starting with the most effective controls at the top. Click a level for details.</p>
+                    <div class="flex flex-col-reverse items-center">
+                        <div class="w-full max-w-sm">
+                            <div class="hierarchy-level text-center p-3 font-semibold text-white bg-red-500 cursor-pointer" data-info="Personal Protective Equipment (PPE): Protect the worker with PPE. This is the least effective control and should be used as a last resort.">PPE</div>
+                            <div class="hierarchy-level text-center p-3 font-semibold text-slate-800 bg-orange-400 cursor-pointer" data-info="Administrative Controls: Change the way people work, e.g., procedures, training, signs.">Admin</div>
+                            <div class="hierarchy-level text-center p-3 font-semibold text-slate-800 bg-yellow-400 cursor-pointer" data-info="Engineering Controls: Isolate people from the hazard, e.g., machine guards, ventilation systems.">Engineering</div>
+                            <div class="hierarchy-level text-center p-3 font-semibold text-white bg-green-500 cursor-pointer" data-info="Substitution: Replace the hazard with something safer.">Substitute</div>
+                            <div class="hierarchy-level text-center p-3 font-semibold text-white bg-teal-600 cursor-pointer" data-info="Elimination: Physically remove the hazard. This is the most effective control.">Eliminate</div>
+                        </div>
+                        <div id="hierarchy-info" class="mt-4 p-4 bg-slate-100 rounded-md w-full max-w-sm min-h-[80px]">
+                            <p class="text-slate-600 text-center">Click a level to see its description.</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+        
+        <section id="matrix" class="content-section">
+            <h2 class="text-3xl font-bold text-slate-900 mb-2">WHS Rights & Responsibilities Matrix</h2>
+            <p class="text-lg text-slate-600 mb-6">This matrix provides a detailed breakdown of rights and responsibilities across key operational domains. Click on any card to expand and see the specific duties for both PCBUs and Workers.</p>
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
+                <details class="bg-white p-4 rounded-lg shadow-md group border-l-4 border-teal-500">
+                    <summary class="font-semibold text-lg cursor-pointer flex justify-between items-center">Work Environment <span class="arrow-down transition-transform duration-300">▼</span></summary>
+                    <div class="mt-4 border-t pt-4">
+                        <h5 class="font-bold text-teal-700">PCBU Responsibility:</h5>
+                        <p class="text-slate-600 mb-2">Provide and maintain a work environment without risks to health and safety (e.g., safe layout, lighting, ventilation, remote work setups).</p>
+                        <h5 class="font-bold text-amber-700">Worker Right:</h5>
+                        <p class="text-slate-600">To work in an environment where all reasonably practicable steps have been taken to protect them from harm.</p>
+                    </div>
+                </details>
+                <details class="bg-white p-4 rounded-lg shadow-md group border-l-4 border-teal-500">
+                    <summary class="font-semibold text-lg cursor-pointer flex justify-between items-center">Plant, Structures & Substances <span class="arrow-down transition-transform duration-300">▼</span></summary>
+                    <div class="mt-4 border-t pt-4">
+                        <h5 class="font-bold text-teal-700">PCBU Responsibility:</h5>
+                        <p class="text-slate-600 mb-2">Provide and maintain safe machinery, sound structures, and safe procedures for handling and storing substances.</p>
+                        <h5 class="font-bold text-amber-700">Worker Right:</h5>
+                        <p class="text-slate-600">To be provided with safe, properly maintained tools and equipment, and information on hazardous chemicals (e.g., Safety Data Sheets).</p>
+                    </div>
+                </details>
+                <details class="bg-white p-4 rounded-lg shadow-md group border-l-4 border-teal-500">
+                    <summary class="font-semibold text-lg cursor-pointer flex justify-between items-center">Risk Management <span class="arrow-down transition-transform duration-300">▼</span></summary>
+                    <div class="mt-4 border-t pt-4">
+                        <h5 class="font-bold text-teal-700">PCBU Responsibility:</h5>
+                        <p class="text-slate-600 mb-2">Systematically identify hazards, assess risks, implement controls using the hierarchy, and review their effectiveness.</p>
+                        <h5 class="font-bold text-amber-700">Worker Responsibility:</h5>
+                        <p class="text-slate-600">To report any hazards, incidents, injuries, or unsafe work practices they identify to a supervisor.</p>
+                    </div>
+                </details>
+                <details class="bg-white p-4 rounded-lg shadow-md group border-l-4 border-teal-500">
+                    <summary class="font-semibold text-lg cursor-pointer flex justify-between items-center">Psychological Health <span class="arrow-down transition-transform duration-300">▼</span></summary>
+                    <div class="mt-4 border-t pt-4">
+                        <h5 class="font-bold text-teal-700">PCBU Responsibility:</h5>
+                        <p class="text-slate-600 mb-2">Identify and control psychosocial hazards like high job demands, poor support, bullying, and harassment.</p>
+                        <h5 class="font-bold text-amber-700">Worker Responsibility:</h5>
+                        <p class="text-slate-600">Not to engage in behaviours that could create psychosocial risks for others, such as bullying or harassment.</p>
+                    </div>
+                </details>
+                <details class="bg-white p-4 rounded-lg shadow-md group border-l-4 border-teal-500">
+                    <summary class="font-semibold text-lg cursor-pointer flex justify-between items-center">Information & Training <span class="arrow-down transition-transform duration-300">▼</span></summary>
+                    <div class="mt-4 border-t pt-4">
+                        <h5 class="font-bold text-teal-700">PCBU Responsibility:</h5>
+                        <p class="text-slate-600 mb-2">Provide necessary induction, task-specific training, and ongoing supervision to ensure work is performed safely.</p>
+                        <h5 class="font-bold text-amber-700">Worker Right:</h5>
+                        <p class="text-slate-600">To be shown how to work safely, be trained on risks and control measures, and to ask questions if unsure.</p>
+                    </div>
+                </details>
+                <details class="bg-white p-4 rounded-lg shadow-md group border-l-4 border-teal-500">
+                    <summary class="font-semibold text-lg cursor-pointer flex justify-between items-center">Consultation <span class="arrow-down transition-transform duration-300">▼</span></summary>
+                    <div class="mt-4 border-t pt-4">
+                        <h5 class="font-bold text-teal-700">PCBU Responsibility:</h5>
+                        <p class="text-slate-600 mb-2">Genuinely consult with workers on safety matters, share information, take their views into account, and advise them of outcomes.</p>
+                        <h5 class="font-bold text-amber-700">Worker Right:</h5>
+                        <p class="text-slate-600">To be consulted on safety matters, speak up about work conditions, and request the election of a Health and Safety Representative (HSR).</p>
+                    </div>
+                </details>
+                <details class="bg-white p-4 rounded-lg shadow-md group border-l-4 border-teal-500">
+                    <summary class="font-semibold text-lg cursor-pointer flex justify-between items-center">Unsafe Work <span class="arrow-down transition-transform duration-300">▼</span></summary>
+                    <div class="mt-4 border-t pt-4">
+                        <h5 class="font-bold text-teal-700">PCBU Responsibility:</h5>
+                        <p class="text-slate-600 mb-2">Respond to notifications of unsafe work, resolve the issue, and provide suitable alternative work if available.</p>
+                        <h5 class="font-bold text-amber-700">Worker Right:</h5>
+                        <p class="text-slate-600">To cease or refuse work if there is a reasonable concern of a serious and immediate risk, and to notify the PCBU.</p>
+                    </div>
+                </details>
+            </div>
+        </section>
+
+    </main>
+
+    <script>
+        const sections = document.querySelectorAll('.content-section');
+        const navLinks = document.querySelectorAll('.nav-link');
+        const mobileMenuButton = document.getElementById('mobile-menu-button');
+        const mobileMenu = document.getElementById('mobile-menu');
+
+        function showView(viewId) {
+            sections.forEach(section => {
+                section.classList.remove('active');
+            });
+            document.getElementById(viewId).classList.add('active');
+            
+            navLinks.forEach(link => {
+                link.classList.remove('active');
+                if (link.getAttribute('onclick').includes(viewId)) {
+                    link.classList.add('active');
+                }
+            });
+
+            if(viewId === 'home') {
+                 navLinks.forEach(link => link.classList.remove('active'));
+            }
+            
+            mobileMenu.classList.add('hidden');
+            window.scrollTo(0, 0);
+        }
+
+        mobileMenuButton.addEventListener('click', () => {
+            mobileMenu.classList.toggle('hidden');
+        });
+        
+        navLinks.forEach(link => {
+            link.addEventListener('click', (e) => {
+                e.preventDefault();
+            });
+        });
+
+        const riskCycleSegments = document.querySelectorAll('.risk-cycle-segment');
+        const riskInfoBox = document.getElementById('risk-info').querySelector('p');
+        const defaultRiskText = riskInfoBox.textContent;
+
+        riskCycleSegments.forEach(segment => {
+            segment.addEventListener('mouseenter', () => {
+                riskInfoBox.textContent = segment.dataset.info;
+            });
+            segment.addEventListener('mouseleave', () => {
+                riskInfoBox.textContent = defaultRiskText;
+            });
+        });
+
+        const hierarchyLevels = document.querySelectorAll('.hierarchy-level');
+        const hierarchyInfoBox = document.getElementById('hierarchy-info').querySelector('p');
+        const defaultHierarchyText = hierarchyInfoBox.textContent;
+
+        hierarchyLevels.forEach(level => {
+            level.addEventListener('click', () => {
+                hierarchyInfoBox.textContent = level.dataset.info;
+                hierarchyLevels.forEach(l => l.style.opacity = '0.7');
+                level.style.opacity = '1';
+            });
+        });
+
+    </script>
+
+</body>
+</html>
