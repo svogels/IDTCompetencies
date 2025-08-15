@@ -1,0 +1,147 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Guide to Australian & NSW Discrimination Law</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <style>
+        body {
+            font-family: 'Inter', sans-serif;
+        }
+        details > summary {
+            list-style: none;
+        }
+        details > summary::-webkit-details-marker {
+            display: none;
+        }
+        details[open] summary .arrow-down {
+            transform: rotate(180deg);
+        }
+    </style>
+</head>
+<body class="bg-slate-50 text-slate-800">
+
+    <div class="container mx-auto max-w-5xl px-4 sm:px-6 lg:px-8 py-12">
+        <header class="text-center mb-10">
+            <h1 class="text-4xl font-extrabold text-slate-900">Equal Opportunity & Discrimination Law</h1>
+            <p class="mt-2 text-xl text-slate-600">A Guide to Your Rights in Australia and New South Wales</p>
+        </header>
+
+        <main class="grid grid-cols-1 md:grid-cols-2 gap-8">
+            
+            <!-- Federal Law Column -->
+            <div class="bg-white p-6 rounded-lg shadow-md">
+                <div class="flex items-center mb-4">
+                    <div class="bg-blue-100 text-blue-700 rounded-full h-12 w-12 flex items-center justify-center mr-4">
+                        <svg xmlns="http://www.w3.org/2000/svg" class="h-7 w-7" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 12l2-2m0 0l7-7 7 7M5 10v10a1 1 0 001 1h3m10-11l2 2m-2-2v10a1 1 0 01-1 1h-3m-6 0a1 1 0 001-1v-4a1 1 0 011-1h2a1 1 0 011 1v4a1 1 0 001 1m-6 0h6" /></svg>
+                    </div>
+                    <div>
+                        <h2 class="text-2xl font-bold text-slate-800">Australian Federal Law</h2>
+                        <p class="text-slate-500">Fair Work Act 2009 & Associated Acts</p>
+                    </div>
+                </div>
+                <p class="text-slate-600 mb-4">Federal laws prohibit an employer from taking 'adverse action' (like dismissal or demotion) against an employee or job applicant based on the following protected attributes:</p>
+                <div class="space-y-3">
+                    <details class="bg-slate-50 rounded group">
+                        <summary class="flex justify-between items-center p-3 cursor-pointer">
+                            <span class="font-semibold">Personal & Physical Attributes</span>
+                            <span class="arrow-down transition-transform duration-300">▼</span>
+                        </summary>
+                        <ul class="p-3 border-t border-slate-200 list-disc list-inside text-slate-600 space-y-1">
+                            <li>Race or colour</li>
+                            <li>Sex, sexual orientation, gender identity, or intersex status</li>
+                            <li>Age</li>
+                            <li>Physical or mental disability</li>
+                        </ul>
+                    </details>
+                    <details class="bg-slate-50 rounded group">
+                        <summary class="flex justify-between items-center p-3 cursor-pointer">
+                            <span class="font-semibold">Family & Relationship Status</span>
+                            <span class="arrow-down transition-transform duration-300">▼</span>
+                        </summary>
+                        <ul class="p-3 border-t border-slate-200 list-disc list-inside text-slate-600 space-y-1">
+                            <li>Marital status</li>
+                            <li>Family or carer's responsibilities</li>
+                            <li>Pregnancy or breastfeeding</li>
+                            <li>Experiencing family and domestic violence</li>
+                        </ul>
+                    </details>
+                    <details class="bg-slate-50 rounded group">
+                        <summary class="flex justify-between items-center p-3 cursor-pointer">
+                            <span class="font-semibold">Beliefs & Background</span>
+                            <span class="arrow-down transition-transform duration-300">▼</span>
+                        </summary>
+                        <ul class="p-3 border-t border-slate-200 list-disc list-inside text-slate-600 space-y-1">
+                            <li>Religion</li>
+                            <li>Political opinion</li>
+                            <li>National extraction (place of birth or ancestry)</li>
+                            <li>Social origin (class or caste)</li>
+                        </ul>
+                    </details>
+                </div>
+            </div>
+
+            <!-- NSW State Law Column -->
+            <div class="bg-white p-6 rounded-lg shadow-md">
+                <div class="flex items-center mb-4">
+                     <div class="bg-green-100 text-green-700 rounded-full h-12 w-12 flex items-center justify-center mr-4">
+                        <svg xmlns="http://www.w3.org/2000/svg" class="h-7 w-7" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 21V5a2 2 0 00-2-2H7a2 2 0 00-2 2v16m14 0h2m-2 0h-5m-9 0H3m2 0h5M9 7h1m-1 4h1m4-4h1m-1 4h1m-5 10v-5a1 1 0 011-1h2a1 1 0 011 1v5m-4 0h4" /></svg>
+                    </div>
+                    <div>
+                        <h2 class="text-2xl font-bold text-slate-800">New South Wales Law</h2>
+                        <p class="text-slate-500">Anti-Discrimination Act 1977</p>
+                    </div>
+                </div>
+                <p class="text-slate-600 mb-4">The NSW Act provides specific protections against discrimination in employment. While there is significant overlap with Federal law, the grounds are defined as follows:</p>
+                <div class="space-y-3">
+                     <details class="bg-slate-50 rounded group">
+                        <summary class="flex justify-between items-center p-3 cursor-pointer">
+                            <span class="font-semibold">Personal & Physical Attributes</span>
+                            <span class="arrow-down transition-transform duration-300">▼</span>
+                        </summary>
+                        <ul class="p-3 border-t border-slate-200 list-disc list-inside text-slate-600 space-y-1">
+                            <li>Race (includes colour, nationality, descent)</li>
+                            <li>Sex (includes pregnancy and breastfeeding)</li>
+                            <li>Age</li>
+                            <li>Disability (past, present, or future)</li>
+                        </ul>
+                    </details>
+                     <details class="bg-slate-50 rounded group">
+                        <summary class="flex justify-between items-center p-3 cursor-pointer">
+                            <span class="font-semibold">Identity & Relationship Status</span>
+                            <span class="arrow-down transition-transform duration-300">▼</span>
+                        </summary>
+                        <ul class="p-3 border-t border-slate-200 list-disc list-inside text-slate-600 space-y-1">
+                            <li>Homosexuality (sexual orientation)</li>
+                            <li>Transgender status (gender identity)</li>
+                             <li>Marital or domestic status</li>
+                            <li>Carer's responsibilities</li>
+                        </ul>
+                    </details>
+                </div>
+            </div>
+
+        </main>
+        
+        <footer class="mt-12 text-center border-t pt-8">
+            <p class="text-lg font-semibold">A Dual Layer of Protection</p>
+            <p class="mt-2 text-slate-600 max-w-3xl mx-auto">Both federal and state laws work together to provide a broad safety net against discrimination. This ensures that employment decisions are based on merit, skills, and qualifications, not on irrelevant personal characteristics.</p>
+        </footer>
+    </div>
+    
+    <script>
+        const detailsElements = document.querySelectorAll('details');
+        detailsElements.forEach(targetDetail => {
+            targetDetail.addEventListener("click", ()_=> {
+                detailsElements.forEach(detail => {
+                    if (detail !== targetDetail) {
+                        detail.removeAttribute("open");
+                    }
+                });
+            });
+        });
+    </script>
+</body>
+</html>
