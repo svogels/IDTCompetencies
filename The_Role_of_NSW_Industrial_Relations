@@ -1,0 +1,108 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>The Role of NSW Industrial Relations</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <style>
+        body {
+            font-family: 'Inter', sans-serif;
+        }
+        details > summary {
+            list-style: none;
+        }
+        details > summary::-webkit-details-marker {
+            display: none;
+        }
+        details[open] summary .arrow-down {
+            transform: rotate(180deg);
+        }
+        .function-card {
+            transition: box-shadow 0.3s ease-in-out, transform 0.3s ease-in-out;
+        }
+        .function-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 15px -3px rgb(0 0 0 / 0.1), 0 4px 6px -4px rgb(0 0 0 / 0.1);
+        }
+    </style>
+</head>
+<body class="bg-slate-50 text-slate-800">
+
+    <div class="container mx-auto max-w-4xl px-4 sm:px-6 lg:px-8 py-12">
+        <header class="text-center mb-10">
+            <h1 class="text-4xl font-extrabold text-slate-900">The Role of NSW Industrial Relations</h1>
+            <p class="mt-3 text-lg text-slate-600 max-w-3xl mx-auto">Ensuring fair and effective workplaces for all by acting as the custodian and monitor of the state's industrial relations system.</p>
+        </header>
+
+        <main class="space-y-6">
+
+            <!-- Compliance -->
+            <div class="function-card bg-white rounded-lg shadow-md overflow-hidden">
+                <div class="p-6">
+                    <div class="flex items-center mb-4">
+                        <div class="bg-blue-100 text-blue-700 rounded-full h-12 w-12 flex items-center justify-center mr-4 flex-shrink-0">
+                            <svg xmlns="http://www.w3.org/2000/svg" class="h-7 w-7" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z" /></svg>
+                        </div>
+                        <div>
+                            <h2 class="text-2xl font-bold text-slate-800">Promoting Compliance with Legislation</h2>
+                            <p class="text-slate-500">Upholding the standards set by state industrial laws.</p>
+                        </div>
+                    </div>
+                    <div class="text-slate-600 space-y-3">
+                        <p><strong>Providing Information and Advice:</strong> Offering a primary point of contact for employees and employers to understand their rights and obligations regarding state industrial laws, including long service leave and public holidays.</p>
+                        <p><strong>Conducting Inspections and Audits:</strong> Proactively running targeted campaigns and audits in specific industries to check that employers are complying with the law, as well as conducting inspections in response to complaints.</p>
+                        <p><strong>Investigating Complaints:</strong> Formally investigating alleged breaches of NSW industrial law, such as underpayment of entitlements.</p>
+                        <p><strong>Enforcing the Law:</strong> Taking enforcement action for breaches, which may include prosecuting the offending business in court to ensure accountability and deter future non-compliance.</p>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Workplace Reform -->
+            <div class="function-card bg-white rounded-lg shadow-md overflow-hidden">
+                <div class="p-6">
+                    <div class="flex items-center mb-4">
+                        <div class="bg-green-100 text-green-700 rounded-full h-12 w-12 flex items-center justify-center mr-4 flex-shrink-0">
+                            <svg xmlns="http://www.w3.org/2000/svg" class="h-7 w-7" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 7h8m0 0v8m0-8l-8 8-4-4-6 6" /></svg>
+                        </div>
+                        <div>
+                            <h2 class="text-2xl font-bold text-slate-800">Promoting Workplace Reform</h2>
+                            <p class="text-slate-500">Modernising laws to address contemporary workplace issues.</p>
+                        </div>
+                    </div>
+                    <div class="text-slate-600 space-y-3">
+                        <p><strong>Modernising Legislation:</strong> Driving changes to industrial laws to address current workplace challenges, such as strengthening protections against psychosocial hazards by making it mandatory to comply with Codes of Practice.</p>
+                        <p><strong>Enhancing Dispute Resolution:</strong> Expanding the jurisdiction of the Industrial Relations Commission (IRC) to create a 'one-stop shop' for handling workplace bullying and sexual harassment complaints for state-system employees.</p>
+                        <p><strong>Championing Gender Equality:</strong> Enshrining gender equality and the elimination of workplace bullying and sexual harassment as explicit objectives of the <em>Industrial Relations Act</em>.</p>
+                        <p><strong>Tackling Wage Theft:</strong> Making it easier for workers to reclaim underpayments by significantly increasing the small claims cap in the IRC.</p>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Public Sector Reform -->
+            <div class="function-card bg-white rounded-lg shadow-md overflow-hidden">
+                <div class="p-6">
+                    <div class="flex items-center mb-4">
+                        <div class="bg-indigo-100 text-indigo-700 rounded-full h-12 w-12 flex items-center justify-center mr-4 flex-shrink-0">
+                           <svg xmlns="http://www.w3.org/2000/svg" class="h-7 w-7" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 21V5a2 2 0 00-2-2H7a2 2 0 00-2 2v16m14 0h2m-2 0h-5m-9 0H3m2 0h5M9 7h1m-1 4h1m4-4h1m-1 4h1m-5 10v-5a1 1 0 011-1h2a1 1 0 011 1v5m-4 0h4" /></svg>
+                        </div>
+                        <div>
+                            <h2 class="text-2xl font-bold text-slate-800">Leading Public Sector Reform</h2>
+                            <p class="text-slate-500">Guiding industrial relations for NSW Government employees.</p>
+                        </div>
+                    </div>
+                    <div class="text-slate-600 space-y-3">
+                        <p><strong>Providing Specialist Advice:</strong> Acting as the government's principal advisor on public sector industrial relations matters, providing guidance to agencies on employment policy and conditions.</p>
+                        <p><strong>Managing Bargaining:</strong> Leading the negotiation process for public sector awards and enterprise agreements on behalf of the government, setting the wages and conditions for public sector employees.</p>
+                        <p><strong>Developing Policy and Best Practice:</strong> Proactively developing and promoting innovative and principles-based industrial relations policies and best practices to be applied across the entire public sector.</p>
+                        <p><strong>Issuing Formal Guidance:</strong> Publishing official Circulars and Memoranda that direct public sector agencies on the application of government employment policies and industrial instruments.</p>
+                    </div>
+                </div>
+            </div>
+
+        </main>
+    </div>
+
+</body>
+</html>
